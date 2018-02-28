@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - "1.8.x"
+  - "1.9.x"
+  - "1.10.x"
+
+services:
+  - mongodb
+
+before_install:
+  - go get -t ./...
+
+script:
+  - go test -v ./...
+  - go tool vet ./...
