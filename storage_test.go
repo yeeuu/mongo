@@ -16,34 +16,24 @@ func TestStorage(t *testing.T) {
 	defer sess.Close()
 	sess.DB("test").DropDatabase()
 	store := NewStorage(sess)
-	err = store.Insert(&userSelector{}, user{Name: "hello"})
+	err = store.Query(&userSelector{}).Insert(user{Name: "hello"})
 	if err != nil {
 		panic(err)
 	}
 	var u user
 	name := "hello"
-	qs, err := store.Query(&userSelector{
+	err = store.Query(&userSelector{
 		Name: &name,
-	})
+	}).One(&u)
 	if err != nil {
 		panic(err)
 	}
-	err = qs.One(&u)
-	if err != nil {
-		panic(err)
-	}
-	qs.Close()
 	fmt.Println(u)
-	err = store.Insert(&userSelector{}, user{Name: "world"})
-	qs, err = store.Query(&userSelector{})
-	if err != nil {
-		panic(err)
-	}
+	store.Query(&userSelector{}).Insert(user{Name: "world"})
 	var users []user
-	err = qs.All(&users)
+	err = store.Query(&userSelector{}).All(&users)
 	if err != nil {
 		panic(err)
 	}
-	qs.Close()
 	fmt.Println(users)
 }
