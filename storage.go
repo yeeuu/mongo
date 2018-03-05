@@ -10,12 +10,6 @@ import (
 type Storage interface {
 	Query(Collection) QuerySet
 	Raw(Collection, bson.M) QuerySet
-	// Insert(c Collection, docs ...interface{}) error
-	// Update(filter, update interface{}) error
-	// UpdateAll(filter, update interface{}) (info *mgo.ChangeInfo, err error)
-	// Upsert(filter, update interface{}) (info *mgo.ChangeInfo, err error)
-	// Remove(filter interface{}) error
-	// RemoveAll(filter interface{}) (info *mgo.ChangeInfo, err error)
 }
 
 type mongoStorage struct {
