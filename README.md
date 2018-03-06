@@ -19,6 +19,8 @@ Do not support complex mongo query for now.
 
 More limits need to discovery :D
 
+All API design may change in the future until reach 1.0
+
 ## Usage
 
 ```go
