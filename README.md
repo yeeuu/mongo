@@ -8,9 +8,19 @@
 
 Simple ODM wraps mgo with interface.
 
+## Design
+
+1. Wrap MongoDB operations with interface{} for TDD development friendly. E.X. [gomock](https://github.com/golang/mock)
+2. Strongly-typed queryset.
+
+## Feature
+
+1. interface wraps for [mgo](https://github.com/globalsign/mgo).
+2. Strongly-typed queryset support.
+
 ## TODO
  - [x] 0.1.0 release
- - [ ] Test cgo getoverage
+ - [ ] Test coverage
  - [x] Travis-ci support
 
 ## Limits
